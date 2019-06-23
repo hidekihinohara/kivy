@@ -1,0 +1,19 @@
+#:kivy 1.0.9
+
+<KeyValidationApp>:
+    result: result
+    BoxLayout:
+        orientation:'vertical'
+        size: root.width -200 , root.height - 200
+        pos:100,100
+        CustomSpinner:
+            text: 'key selection'
+            values: "C", "G", "D", "A", "E", "B", "F#", "C#","F","Bb","Eb","Ab","Db","Gb","Cb"
+            size_hint: None, None
+            size: 200, 66
+            pos_hint: {'center_x': .1, 'center_y': .9}
+            on_text: root.on_spinner_change(self.text)
+        TextInput:
+            id: result
+            text: ''
+            size_hint:1,1
