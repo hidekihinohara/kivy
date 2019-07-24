@@ -1,19 +1,49 @@
-#:kivy 1.0.9
+KeyValidationApp:
 
 <KeyValidationApp>:
-    result: result
-    BoxLayout:
-        orientation:'vertical'
-        size: root.width -200 , root.height - 200
-        pos:100,100
+    major_scale: major_scale
+    minor_scale: minor_scale
+    modes: modes
+    chords: chords
+    GridLayout:
+        canvas.before:
+            Color:
+                rgba:1, .5, .6, .5
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        rows:5
+        cols:5
+        padding: 10
+        spacing: 10
         CustomSpinner:
-            text: 'key selection'
+            text: 'keys'
             values: "C", "G", "D", "A", "E", "B", "F#", "C#","F","Bb","Eb","Ab","Db","Gb","Cb"
-            size_hint: None, None
-            size: 200, 66
-            pos_hint: {'center_x': .1, 'center_y': .9}
+            size_hint: 1, 1
+            size: 33, 33
+            pos_hint: {'center_x': .9, 'center_y': .1}
             on_text: root.on_spinner_change(self.text)
+        Label:
+            text: "major scale"
         TextInput:
-            id: result
-            text: ''
-            size_hint:1,1
+            id: major_scale
+            multiline: True
+        Label:
+            text: "minor scale"
+        TextInput:
+            id: minor_scale
+            multiline: True
+        Label:
+            text: "modes"
+        TextInput:
+            id: modes
+            multiline: True
+        Label:
+            text: "chords"
+        TextInput:
+            id: chords
+            multiline: True
+        Button:
+            text: 'Go to Next Page'
+            on_press: print("Page2")
